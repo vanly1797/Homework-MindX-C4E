@@ -10,3 +10,13 @@ function changeColor() {
     document.body.style.backgroundColor = "#" + randomColor;
 }
 // HOMEWORK01-END
+
+// HOMEWORK02-START
+let valueUpdate = document.getElementById("btn");
+let temp = parseInt(valueUpdate.value);
+
+function updateValue() {
+    temp = temp + 1;
+    valueUpdate.innerHTML = temp.toString();
+}
+// HOMEWORK02-END
