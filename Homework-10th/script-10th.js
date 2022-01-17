@@ -45,4 +45,19 @@ let obj2 = {
     bar: ["example", "mem", null, { xyz: 6 }, 88],
     qux: [4, 8, 12]
 };
+
+//1.
+//obj2.bar[3].xyz = 606;
+
+//2.
+if (obj2['bar']) {
+    for (let i in obj2['bar']) {
+        for (let j in obj2['bar'][i]) {
+            if (obj2['bar'][i][j] === 6) {
+                obj2['bar'][i][j] = 606;
+            }
+        }
+    }
+}
+console.log(obj2);
 // HOMEWORK04-END
