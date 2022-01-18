@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Homework-12th-DOM Event</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 300px;
+            background-color: gainsboro;
+            border: solid 1px darkgray;
+            border-radius: 5px;
+        }
+        
+        .container h1 {
+            text-align: center;
+        }
+        
+        table tr td {
+            padding: 5px;
+        }
+        
+        table {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sign In</h1>
+        <form id="sign-in-form">
+
+        </form>
+        <table id="myForm">
+            <tr>
+                <td style="font-weight: bold;">Username:</td>
+                <td>
+                    <input type="text" placeholder="Input your username" id="user" />
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Password:</td>
+                <td>
+                    <input type="text" placeholder="Input your password" id="pass" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; color: red;" id="error-text"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="btn-submit" type="submit" onclick="checkValidate()">Submit</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function checkValidate() {
+            let usname = document.getElementById("user");
+            let pass = document.getElementById("pass");
+            let error = document.getElementById("error-text");
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (usname.value == "") {
+                error.innerHTML = "Please fill user name!";
+                return false;
+            } else {
+                if (usname.value.match(mailformat)) {
+                    if (pass.value == "") {
+                        error.innerHTML = "Please fill password!";
+                        return false;
+                    } else {
+                        if (pass.value.length < 8) {
+                            error.innerHTML = "Password must be at least 8 characters long!!!";
+                            return false;
+                        } else {
+                            error.innerHTML = "Successfully, Welcome to MindX!"
+                            return true;
+                        }
+                    }
+                } else {
+                    alert("You have entered an invalid email address!");
+                    return false;
+                }
+
+            }
+        }
+
+        document.getElementById("myForm").onsubmit = function(e) {
+            if (!checkValidate()) {
+                e.preventDefault();
+            }
+        };
+    </script>
+</body>
+
+</html>
